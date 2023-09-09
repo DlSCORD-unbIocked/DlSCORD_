@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    
+    function updateKey(){
+
+      let token = document.cookie.slice(6)
+      if (token != null){
+        elements = document.getElementsByName("token")
+        for (let i = 0; i < elements.length; i++){
+          elements[i].value = token
+
+        }
+        document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
+       
+    }
+
+
+    }
+    function logOut(){
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location = "/"
+      return false
+    }
+    function login(){
+      let token = document.getElementById("tokenPaste").value
+      document.cookie = "token="+token
+      updateKey()
+    }
+
+
+  </script>
+  <div class="sidenav">
+    <button onclick="logOut()">Log Out
+    </button>
+    <div class = "opts">
+    <form action = {{"/guild/0"}} method = "post">
+      <input type= 'hidden' id='serverBtn' name="token" value="1" >
+      <button style="width:130px;background-color:grey;">
+       Servers
+      </button>
+
+    </form>
+    <form action = {{"/dm/0"}} method = "post">
+      <input  type="hidden" id="dmBtn" name="token" value="1" >
+
+      <button style="width:130px;background-color:grey;">
+       DMs
+      </button>
+
+    </form>
+  </div>
+
+    <div id='guilds'>
+
+      {%if guilds%}
+
+      {%for guild in guilds%}
+
+<form action = {{("/channel/" if (guild_check == 'guild') else "/messages/")~guild['id']}} method = "post">
+  <input type="hidden" name="token" value="1">
+
+             <button>
+              {%if guild['name']%}
+              {{guild['name']}}
+              {%else%}
+              {{guild['recipients']|join(', ', attribute = 'global_name')}}
+              {%endif%}
+             </button>
+            </form>
+      {%endfor%}
+      {%else%}
+        <button onclick="function a(){document.getElementById('tokenPaste').type='text'};a()">Login
+        </button>
+        <form action = {{"/guild/0"}} method = "post" onsubmit="login()">
+
+        <input id="tokenPaste" type="hidden" placeholder="Paste Token here" >
+        <input type="hidden" name="token" value=1>
+        </form>
+      {%endif%}
+      </div>
+  </div>
+<body>
+    <style>
+        body {
+          background-color: #40444b;
+          color: white;
+          font-size:20px;
+          margin-left:170px;
+          padding: 0px 10px;
+        }
+        #ident {
+            color: #e65555;
+            font-size: 50px;
+          }
+        #sendbox{
+          width:1300px;
+          height:30px;
+          border:3px solid black;
+          font-size:14pt;
+          background-color: #40444b;
+          color: white;
+
+        }
+        .sidenav {
+          height: 100%; /* Full-height: remove this if you want "auto" height */
+          width: 150px; /* Set the width of the sidebar */
+          position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+          z-index: 1; /* Stay on top */
+          top: 0; /* Stay at the top */
+          left: 0;
+          background-color: #111; /* Black */
+          overflow-x: hidden; /* Disable horizontal scroll */
+          padding-top: 20px;
+
+        .opts {
+          text-align:center;
+        }
+        }
+      </style>
+
+<p id='messages'>
+  {%if messages%}
+    {%for item in messages%}
+       <br><b>{{item['author']['global_name']}}</b>:<br>{{item['content']}}<br>
+    {%endfor%}
+    <form action = "" method = "post">
+      <input type="hidden" name="token" value="1">
+      <input type="hidden" name="send" value="true">
+
+      <input id="sendbox" name="message" type="text" placeholder="Send message..." autocomplete="off">
+      </form>
+
+  {%else%}
+    <b id="ident" >You are not logged in yet</b>
+    
+  {%endif%}
+</p>
+
+
+
+
+</body>
+<script>
+
+  setTimeout(function(){if(document.getElementById("sendbox")){
+    document.getElementById("sendbox").scrollIntoView(false)};
+             }, 20);
+
+   updateKey()
+
+</script>
+</html>
