@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+    </head>
   <script>
     
     function updateKey(){
@@ -82,48 +85,7 @@
       {%endif%}
       </div>
   </div>
-<body>
-    <style>
-        body {
-          background-color: #40444b;
-          color: white;
-          font-size:20px;
-          margin-left:170px;
-          padding: 0px 10px;
-        }
-        b {
-          color: #Ee585b;
-        }
-        #ident {
-            color: #e65555;
-            font-size: 50px;
-          }
-        #sendbox{
-          width:1300px;
-          height:30px;
-          border:3px solid black;
-          font-size:14pt;
-          background-color: #40444b;
-          color: white;
-
-        }
-        .sidenav {
-          height: 100%; /* Full-height: remove this if you want "auto" height */
-          width: 150px; /* Set the width of the sidebar */
-          position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-          z-index: 1; /* Stay on top */
-          top: 0; /* Stay at the top */
-          left: 0;
-          background-color: #111; /* Black */
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 20px;
-
-        .opts {
-          text-align:center;
-        }
-        }
-      </style>
-
+  <body>
 <p id='messages'>
   {%if messages%}
     {%for item in messages%}
