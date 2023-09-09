@@ -5,7 +5,7 @@
     function updateKey(){
 
       let token = document.cookie.slice(6)
-      if (token != null){
+      if (token){
         elements = document.getElementsByName("token")
         for (let i = 0; i < elements.length; i++){
           elements[i].value = token
