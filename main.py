@@ -55,9 +55,9 @@ def home():
     )
 
 
-@app.route('/index/')
+@app.route("/index/")
 def about():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
 @app.route(r"/<guild>/<int:server>/", methods=["POST", "GET"])
