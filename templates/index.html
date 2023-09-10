@@ -25,21 +25,17 @@
       window.location = "/"
       return false
     }
-    function login(){
-      let token = document.getElementById("tokenPaste").value
-      document.cookie = "token="+token
-      updateKey()
-    }
+    
 
 
   </script>
   <div class="sidenav">
-    <button onclick="logOut()">Log Out
+    <button onclick="logOut()" class="opts">Log Out
     </button>
-    <div class = "opts">
+    
     <form action = {{"/guild/0"}} method = "post">
       <input type= 'hidden' id='serverBtn' name="token" value="1" >
-      <button style="width:130px;background-color:grey;">
+      <button class = "opts">
        Servers
       </button>
 
@@ -47,12 +43,12 @@
     <form action = {{"/dm/0"}} method = "post">
       <input  type="hidden" id="dmBtn" name="token" value="1" >
 
-      <button style="width:130px;background-color:grey;">
+      <button class = "opts">
        DMs
       </button>
 
     </form>
-  </div>
+  
 
     <div id='guilds'>
 
@@ -63,7 +59,7 @@
 <form action = {{("/channel/" if (guild_check == 'guild') else "/messages/")~guild['id']}} method = "post">
   <input type="hidden" name="token" value="1">
 
-             <button>
+             <button class="channelBtns">
               {%if guild['name']%}
               {{guild['name']}}
               {%else%}
@@ -72,16 +68,7 @@
              </button>
             </form>
       {%endfor%}
-      {%else%}
-        <button onclick="function a(){document.getElementById('tokenPaste').type='text'; document.getElementById('submitToken').style=''};a()">Login
-        </button>
-        <form action = {{"/guild/0"}} method = "post" onsubmit="login()">
-
-        <input id="tokenPaste" type="hidden" placeholder="Paste Token here" >
-        <button type="submit" style="display: none;" id="submitToken">Submit</button>
-
-        <input type="hidden" name="token" value=1>
-        </form>
+      
       {%endif%}
       </div>
   </div>

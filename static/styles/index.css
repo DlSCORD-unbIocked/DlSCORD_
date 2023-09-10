@@ -1,37 +1,133 @@
 body {
-          background-color: #40444b;
-          color: white;
-          font-size:20px;
-          margin-left:170px;
-          padding: 0px 10px;
+  background-color: #40444b;
+  color: white;
+  font-size: 20px;
+  margin-left: 170px;
+  padding: 0px 10px;
 }
+
 b {
-          color: #Ee585b;
+  color: #Ee585b;
 }
+
 #ident {
-    color: #e65555;
-    font-size: 50px;
-  }
-#sendbox{
-  width:1300px;
-  height:30px;
-  border:3px solid black;
-  font-size:14pt;
+  color: #e65555;
+  font-size: 50px;
+}
+
+#sendbox {
+  width: 1300px;
+  height: 30px;
+  border: 3px solid black;
+  font-size: 14pt;
   background-color: #40444b;
   color: white;
 
 }
+
 .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 150px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+  height: 100%;
+  /* Full-height: remove this if you want "auto" height */
+  width: 110px;
+  /* Set the width of the sidebar */
+  position: fixed;
+  /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
+  left: 0;
+  background-color: #111;
+  /* Black */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 20px;
 }
+
+.channelBtns {
+  width: 80px;
+  height: 80px;
+  border-radius: 45%;
+  transition-duration: 0.3s;
+}
+
+.channelBtns:hover {
+
+
+  background-color: rgb(129, 124, 129);
+  border-radius: 20px;
+}
+
 .opts {
-    text-align: center;
+  width: 80px;
+  height: 80px;
+  border-color: rgb(172, 172, 172);
+  border-width: 3px;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 45px;
+  transition-duration: 0.3s;
+}
+
+.opts:hover {
+  border-radius: 20px;
+}
+
+.opts:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 20px;
+}
+
+.opts:active {
+  color: #000;
+
+}
+
+.opts:active:after {
+  background: transparent;
+}
+
+.opts:hover:before {
+  opacity: 1;
+}
+
+.opts:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 45%;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }
