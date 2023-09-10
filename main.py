@@ -51,8 +51,13 @@ def send_message(channel, key, content):
 @app.route(r"/")
 def home():
     return render_template(
-        "index.html",
+        "login.html",
     )
+
+
+@app.route('/index/')
+def about():
+    return render_template('index.html')
 
 
 @app.route(r"/<guild>/<int:server>/", methods=["POST", "GET"])

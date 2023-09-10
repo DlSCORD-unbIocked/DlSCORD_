@@ -4,7 +4,6 @@
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
     </head>
   <script>
-    
     function updateKey(){
 
       let token = document.cookie.slice(6)
@@ -15,20 +14,12 @@
 
         }
         document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
-       
-    }
 
-
-    }
+    }}
     function logOut(){
       document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       window.location = "/"
       return false
-    }
-    function login(){
-      let token = document.getElementById("tokenPaste").value
-      document.cookie = "token="+token
-      updateKey()
     }
 
 
@@ -72,16 +63,6 @@
              </button>
             </form>
       {%endfor%}
-      {%else%}
-        <button onclick="function a(){document.getElementById('tokenPaste').type='text'; document.getElementById('submitToken').style=''};a()">Login
-        </button>
-        <form action = {{"/guild/0"}} method = "post" onsubmit="login()">
-
-        <input id="tokenPaste" type="hidden" placeholder="Paste Token here" >
-        <button type="submit" style="display: none;" id="submitToken">Submit</button>
-
-        <input type="hidden" name="token" value=1>
-        </form>
       {%endif%}
       </div>
   </div>
