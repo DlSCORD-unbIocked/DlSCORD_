@@ -4,6 +4,7 @@
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
     </head>
   <script>
+    
     function updateKey(){
 
       let token = document.cookie.slice(6)
@@ -14,23 +15,27 @@
 
         }
         document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
+       
+    }
 
-    }}
+
+    }
     function logOut(){
       document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       window.location = "/"
       return false
     }
+    
 
 
   </script>
   <div class="sidenav">
-    <button onclick="logOut()">Log Out
+    <button onclick="logOut()" class="opts">Log Out
     </button>
-    <div class = "opts">
+    
     <form action = {{"/guild/0"}} method = "post">
       <input type= 'hidden' id='serverBtn' name="token" value="1" >
-      <button style="width:130px;background-color:grey;">
+      <button class = "opts">
        Servers
       </button>
 
@@ -38,12 +43,12 @@
     <form action = {{"/dm/0"}} method = "post">
       <input  type="hidden" id="dmBtn" name="token" value="1" >
 
-      <button style="width:130px;background-color:grey;">
+      <button class = "opts">
        DMs
       </button>
 
     </form>
-  </div>
+  
 
     <div id='guilds'>
 
@@ -54,7 +59,7 @@
 <form action = {{("/channel/" if (guild_check == 'guild') else "/messages/")~guild['id']}} method = "post">
   <input type="hidden" name="token" value="1">
 
-             <button>
+             <button class="channelBtns">
               {%if guild['name']%}
               {{guild['name']}}
               {%else%}
@@ -63,6 +68,7 @@
              </button>
             </form>
       {%endfor%}
+      
       {%endif%}
       </div>
   </div>
