@@ -11,16 +11,17 @@
 
     }
 </script>
-<body>
-    <h1>Please sign in</h1>
-    <button onclick="function a(){document.getElementById('tokenPaste').type='text'; document.getElementById('submitToken').style=''};a()">Login
-        </button>
-        <form action = {{"/dms/0"}} method = "post" onsubmit="login()">
+<div class="items">
+    <h1 id="ident">Please login</h1>
+    <br><a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank">How to find discord token</a>
 
-        <input id="tokenPaste" type="hidden" placeholder="Paste Token here" >
-        <button type="submit" style="display: none;" id="submitToken">Submit</button>
+        <form action = {{"/guild/0"}} method = "post" onsubmit="login()">
+
+        <input id="tokenPaste" type="text" placeholder="Paste Token here" >
+        <br>
+        <button type="submit" id="submitToken">Submit</button>
 
         <input type="hidden" name="token" value=1>
         </form>
-</body>
+    </div>
 </html>
