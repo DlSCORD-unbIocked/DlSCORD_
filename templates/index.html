@@ -12,17 +12,19 @@
                     elements[i].value = token
 
                 }
-                document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
             }
         }
 
         function logOut(){
             document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            window.location = "/"
+            window.location = "/login"
             return false
         }
     </script>
     <div class="sBar">
+        <button onclick="logOut()" class="logout">
+            Switch account
+        </button>
         <form action = {{"/dm/0"}} method = "post">
             <input  type="hidden" id="openDms" name="token" value="1" >
             <button class = "opts">
@@ -32,11 +34,11 @@
 
         <div class="serverBtns">
             {% for guild in guilds %}
-                <form action = {{ ("/channel/") }} method = "post">
+                <form action = {{ "/channel/" ~ guild['id']}} method = "post">
                     <input type="hidden" name="token" value="1">
                     {%if guild['name']%}
                        <button class="serverBtn">
-                               {{guild['name']}}}
+                               {{guild['name']}}
                        </button>
                     {%endif%}
                 </form>
@@ -46,7 +48,7 @@
     <div class="sNav">
         <div class="dmBtns" type="hidden">
             {% for dms in snav %}
-                <form action = {{ ("/message/") }} method = "post">
+                <form action = {{ "/message/"~dms['id']}} method = "post">
                     <input type="hidden" name="token" value="1">
                         {%if dms['name']%}
                             <button class="gcBtn">
@@ -75,15 +77,10 @@
                     <input id="sendbox" name="message" type="text" placeholder="Send message..." autocomplete="off">
                 </form>
 
-            {%else%}
-                <b id="ident" >You are not logged in yet</b>
-                <br><a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank" style="color:#Ee585b;">How to find discord token</a>
-
+            
             {%endif%}
         </p>
-        <button onclick="logOut()" class="logout">
-            Log Out
-        </button>
+        
     </body>
 
     <script>

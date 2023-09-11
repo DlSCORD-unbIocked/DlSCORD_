@@ -48,14 +48,14 @@ def send_message(channel, key, content):
     )
 
 
-@app.route(r"/")
+@app.route(r"/login")
 def home():
     return render_template(
         "login.html",
     )
 
 
-@app.route("/dms/0/")
+@app.route("/")
 def about():
     return render_template("index.html")
 
@@ -72,14 +72,18 @@ def channels(server, guild):
         guilds = get_guilds(key)
         if guild == "channel":
             snav = get_channels(server, key)
-        elif guild == "dms":
+        elif guild == "dm":
             snav = get_dms(key)
         else:
             snav = get_dms(key)
             message = get_message(server, key)
-
     return render_template(
-        "index.html", key=key, guild_check=guild, messages=message, guilds=guilds, snav=snav
+        "index.html",
+        key=key,
+        guild_check=guild,
+        messages=message,
+        guilds=guilds,
+        snav=snav,
     )
 
 

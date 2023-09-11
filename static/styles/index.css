@@ -11,7 +11,7 @@ body {
   background-color: var(--color-dark);
   color: white;
   font-size: 20px;
-  margin-left: 170px;
+  margin-left: 90px;
   padding: 0px 10px;
 }
 
@@ -41,8 +41,9 @@ b {
   left: 0;
   overflow-x: hidden;
 }
+
 .sBar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .serverBtns {
@@ -53,6 +54,7 @@ b {
   padding: 1rem;
   gap: 1rem;
 }
+
 .serverBtn {
   background: var(--color-lighter-dark);
   width: 48px;
@@ -61,12 +63,20 @@ b {
   transition-duration: 0.3s;
 }
 
-.snav {
-
+.sNav {
+  height: 100%;
+  background: darkslategray;
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 2;
+  overflow-x: hidden;
 }
-.dmBtns {
 
+.sNav::-webkit-scrollbar {
+  display: none;
 }
+
 .dmBtn {
   background: var(--color-fantastic-green);
   width: 48px;
@@ -78,5 +88,3 @@ b {
   background-color: rgb(129, 124, 129);
   border-radius: 20px;
 }
-
-
