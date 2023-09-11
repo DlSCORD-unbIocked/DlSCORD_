@@ -55,7 +55,7 @@ def home():
     )
 
 
-@app.route("/index/")
+@app.route("/dms/0/")
 def about():
     return render_template("index.html")
 
@@ -69,18 +69,17 @@ def channels(server, guild):
     else:
         key = request.form["token"]
         message = False
-        if guild == "guild":
-            guilds = get_guilds(key)
-        elif guild == "channel":
-            guilds = get_channels(server, key)
-        elif guild == "dm":
-            guilds = get_dms(key)
+        guilds = get_guilds(key)
+        if guild == "channel":
+            snav = get_channels(server, key)
+        elif guild == "dms":
+            snav = get_dms(key)
         else:
-            guilds = get_dms(key)
+            snav = get_dms(key)
             message = get_message(server, key)
 
     return render_template(
-        "index.html", key=key, guild_check=guild, messages=message, guilds=guilds
+        "index.html", key=key, guild_check=guild, messages=message, guilds=guilds, snav=snav
     )
 
 

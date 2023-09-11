@@ -3,106 +3,94 @@
     <head>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
     </head>
-  <script>
-    
-    function updateKey(){
+    <script>
+        function updateKey(){
+        let token = document.cookie.slice(6)
+            if (token){
+                elements = document.getElementsByName("token")
+                for (let i = 0; i < elements.length; i++){
+                    elements[i].value = token
 
-      let token = document.cookie.slice(6)
-      if (token){
-        elements = document.getElementsByName("token")
-        for (let i = 0; i < elements.length; i++){
-          elements[i].value = token
-
+                }
+                document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
+            }
         }
-        document.getElementById("ident").innerText = "You are logged in, select a Server or DM"
-       
-    }
 
+        function logOut(){
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location = "/"
+            return false
+        }
+    </script>
+    <div class="sBar">
+        <form action = {{"/dm/0"}} method = "post">
+            <input  type="hidden" id="openDms" name="token" value="1" >
+            <button class = "opts">
+                DMs
+            </button>
+        </form>
 
-    }
-    function logOut(){
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location = "/"
-      return false
-    }
-    
+        <div class="serverBtns">
+            {% for guild in guilds %}
+                <form action = {{ ("/channel/") }} method = "post">
+                    <input type="hidden" name="token" value="1">
+                    {%if guild['name']%}
+                       <button class="serverBtn">
+                               {{guild['name']}}}
+                       </button>
+                    {%endif%}
+                </form>
+            {%endfor%}
+        </div>
+    </div>
+    <div class="sNav">
+        <div class="dmBtns" type="hidden">
+            {% for dms in snav %}
+                <form action = {{ ("/message/") }} method = "post">
+                    <input type="hidden" name="token" value="1">
+                        {%if dms['name']%}
+                            <button class="gcBtn">
+                                    {{dms['name']}}
+                            </button>
+                        {%else%}
+                            <button class="dmBtn">
+                                {{dms['recipients']|join(', ', attribute = 'global_name')}}
+                            </button>
+                        {%endif%}
+                </form>
+            {%endfor%}
+        </div>
+    </div>
 
+    <body>
+        <p id='messages'>
+            {%if messages%}
+                {%for item in messages%}
+                    <br><b>{{item['author']['global_name']}}</b>:<br>{{item['content']}}<br>
+                {%endfor%}
 
-  </script>
-  <div class="sidenav">
-    <button onclick="logOut()" class="opts">Log Out
-    </button>
-    
-    <form action = {{"/guild/0"}} method = "post">
-      <input type= 'hidden' id='serverBtn' name="token" value="1" >
-      <button class = "opts">
-       Servers
-      </button>
+                <form action = "" method = "post">
+                    <input type="hidden" name="token" value="1">
+                    <input type="hidden" name="send" value="true">
+                    <input id="sendbox" name="message" type="text" placeholder="Send message..." autocomplete="off">
+                </form>
 
-    </form>
-    <form action = {{"/dm/0"}} method = "post">
-      <input  type="hidden" id="dmBtn" name="token" value="1" >
+            {%else%}
+                <b id="ident" >You are not logged in yet</b>
+                <br><a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank" style="color:#Ee585b;">How to find discord token</a>
 
-      <button class = "opts">
-       DMs
-      </button>
+            {%endif%}
+        </p>
+        <button onclick="logOut()" class="logout">
+            Log Out
+        </button>
+    </body>
 
-    </form>
-  
+    <script>
 
-    <div id='guilds'>
-
-      {%if guilds%}
-
-      {%for guild in guilds%}
-
-<form action = {{("/channel/" if (guild_check == 'guild') else "/messages/")~guild['id']}} method = "post">
-  <input type="hidden" name="token" value="1">
-
-             <button class="channelBtns">
-              {%if guild['name']%}
-              {{guild['name']}}
-              {%else%}
-              {{guild['recipients']|join(', ', attribute = 'global_name')}}
-              {%endif%}
-             </button>
-            </form>
-      {%endfor%}
-      
-      {%endif%}
-      </div>
-  </div>
-  <body>
-<p id='messages'>
-  {%if messages%}
-    {%for item in messages%}
-       <br><b>{{item['author']['global_name']}}</b>:<br>{{item['content']}}<br>
-    {%endfor%}
-    <form action = "" method = "post">
-      <input type="hidden" name="token" value="1">
-      <input type="hidden" name="send" value="true">
-
-      <input id="sendbox" name="message" type="text" placeholder="Send message..." autocomplete="off">
-      </form>
-
-  {%else%}
-    <b id="ident" >You are not logged in yet</b>
-    <br><a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank" style="color:#Ee585b;">How to find discord token</a>
-
-  {%endif%}
-</p>
-
-
-
-
-</body>
-<script>
-
-  setTimeout(function(){if(document.getElementById("sendbox")){
-    document.getElementById("sendbox").scrollIntoView(false)};
-             }, 20);
-
-   updateKey()
-
-</script>
+        setTimeout(function(){if(document.getElementById("sendbox")){
+            document.getElementById("sendbox").scrollIntoView(false)}
+        }, 20);
+        updateKey()
+    </script>
 </html>

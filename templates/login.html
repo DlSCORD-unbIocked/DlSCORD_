@@ -15,7 +15,7 @@
     <h1>Please sign in</h1>
     <button onclick="function a(){document.getElementById('tokenPaste').type='text'; document.getElementById('submitToken').style=''};a()">Login
         </button>
-        <form action = {{"/guild/0"}} method = "post" onsubmit="login()">
+        <form action = {{"/dms/0"}} method = "post" onsubmit="login()">
 
         <input id="tokenPaste" type="hidden" placeholder="Paste Token here" >
         <button type="submit" style="display: none;" id="submitToken">Submit</button>

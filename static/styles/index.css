@@ -1,5 +1,14 @@
+:root {
+  --color-not-quite-black: #23272a;
+  --color-dark: #2c2f33;
+  --color-lighter-dark: #45494e;
+  --color-full-white: #ffffff;
+  --color-actually-black: #000000;
+  --color-fantastic-green: #00ae7a;
+}
+
 body {
-  background-color: #40444b;
+  background-color: var(--color-dark);
   color: white;
   font-size: 20px;
   margin-left: 170px;
@@ -22,112 +31,52 @@ b {
   font-size: 14pt;
   background-color: #40444b;
   color: white;
-
 }
 
-.sidenav {
+.sBar {
   height: 100%;
-  /* Full-height: remove this if you want "auto" height */
-  width: 110px;
-  /* Set the width of the sidebar */
+  background: var(--color-not-quite-black);
   position: fixed;
-  /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1;
-  /* Stay on top */
   top: 0;
-  /* Stay at the top */
   left: 0;
-  background-color: #111;
-  /* Black */
   overflow-x: hidden;
-  /* Disable horizontal scroll */
-  padding-top: 20px;
+}
+.sBar::-webkit-scrollbar {
+    display: none;
 }
 
-.channelBtns {
-  width: 80px;
-  height: 80px;
-  border-radius: 45%;
+.serverBtns {
+  background: var(--color-not-quite-black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+.serverBtn {
+  background: var(--color-lighter-dark);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   transition-duration: 0.3s;
 }
 
-.channelBtns:hover {
+.snav {
 
+}
+.dmBtns {
 
+}
+.dmBtn {
+  background: var(--color-fantastic-green);
+  width: 48px;
+  height: 48px;
+  transition-duration: 0.3s;
+}
+
+.channelBtn:hover {
   background-color: rgb(129, 124, 129);
   border-radius: 20px;
 }
 
-.opts {
-  width: 80px;
-  height: 80px;
-  border-color: rgb(172, 172, 172);
-  border-width: 3px;
-  color: #fff;
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 45px;
-  transition-duration: 0.3s;
-}
 
-.opts:hover {
-  border-radius: 20px;
-}
-
-.opts:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity .3s ease-in-out;
-  border-radius: 20px;
-}
-
-.opts:active {
-  color: #000;
-
-}
-
-.opts:active:after {
-  background: transparent;
-}
-
-.opts:hover:before {
-  opacity: 1;
-}
-
-.opts:after {
-  z-index: -1;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 45%;
-}
-
-@keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 400% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
