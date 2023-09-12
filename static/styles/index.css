@@ -15,6 +15,10 @@ body {
   padding: 0px 10px;
 }
 
+#messages {
+  margin-left: 180px;
+}
+
 b {
   color: #Ee585b;
 }
@@ -25,7 +29,8 @@ b {
 }
 
 #sendbox {
-  width: 1300px;
+  margin-left: 180px;
+  width: 600px;
   height: 30px;
   border: 3px solid black;
   font-size: 14pt;
@@ -79,8 +84,8 @@ b {
 
 .dmBtn {
   background: var(--color-fantastic-green);
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: 30px;
   transition-duration: 0.3s;
 }
 
