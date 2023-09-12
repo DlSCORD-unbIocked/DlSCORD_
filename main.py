@@ -66,6 +66,10 @@ def channels(server, guild):
         key, message = request.form["token"], request.form["message"]
         send_message(server, key, message)
         guilds, message = get_guilds(key), get_message(server, key)
+        if guild == "channel":
+            snav = get_channels(server, key)
+        else:
+            snav = get_dms(key)
     else:
         key = request.form["token"]
         message = False
