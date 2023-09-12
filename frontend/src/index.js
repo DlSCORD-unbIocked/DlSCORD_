@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom/client';
 import Login from './login/login';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Messages from "./messages/messages";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <Login />
-      {/*<BrowserRouter>*/}
-      {/*    <Routes>*/}
-      {/*        <Route path={"/"} element={<Login />} />*/}
-      {/*    </Routes>*/}
-      {/*</BrowserRouter>*/}
+      <BrowserRouter>
+          <Routes>
+              <Route path={"/"} element={<Login />} />
+              <Route path={"/messages"} element={<Messages />} />
+          </Routes>
+      </BrowserRouter>
 
   </React.StrictMode>
 );

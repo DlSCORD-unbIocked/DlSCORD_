@@ -7,6 +7,10 @@ app = Flask(__name__, static_folder="./static")
 
 @app.route("/")
 def about():
+    """
+    returns frontend
+    Note: only 1 path ("/") is necessary because react js handles all other paths
+    """
     return render_template(os.path.join("../frontend/build/index.html"))
 
 

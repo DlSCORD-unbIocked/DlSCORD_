@@ -4,9 +4,11 @@ import './login.scss';
 function Login() {
     const [token, setToken] = useState("");
   const login = async (e) => {
-      e.preventDefault()
-      Cookies.set("token", token)
-      console.log("logging in")
+      // e.preventDefault()
+      // Cookies.set("token", token)
+      // console.log("logging in")
+      window.open("messages", "_self");
+
   };
 
   return (
