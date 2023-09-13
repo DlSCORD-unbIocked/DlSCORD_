@@ -1,13 +1,13 @@
 import {useState} from "react";
 
 
-const Item = (props) => {
-
-    // props['author']['global_name']}}</b>:<br>{{item['content']
-
-    return (
-    )
-}
+// const Item = (props) => {
+//
+//     // props['author']['global_name']}}</b>:<br>{{item['content']
+//
+//     return (
+//     )
+// }
 const MessagesScreen = (props) => {
     const [message, setMessage] = useState("")
     const handleMessageChange = (e) => { setMessage(e.target.value) }
