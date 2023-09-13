@@ -10,7 +10,7 @@ app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 # frontend_path = "../frontend/build"
 
 @app.route("/")
-@app.route("/messages")
+@app.route("/home")
 def about():
     """
     returns frontend
@@ -45,7 +45,7 @@ def channels(server, guild):
 #         "index.html",
 #         key=key,
 #         guild_check=guild,
-#         messages=message,
+#         home=message,
 #         guilds=guilds,
 #         snav=snav,
 #     )

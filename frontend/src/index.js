@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Login from './login/login';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Messages from "./messages/messages";
+import Home from "./home/home";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +11,7 @@ root.render(
       <BrowserRouter>
           <Routes>
               <Route path={"/"} element={<Login />} />
-              <Route path={"/messages"} element={<Messages />} />
+              <Route path={"/home"} element={<Home />} />
           </Routes>
       </BrowserRouter>
 

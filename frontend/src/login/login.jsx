@@ -19,7 +19,7 @@ function Login() {
           <h1>aklsdfl;asjdflol</h1>
             <input onChange={handleTokenChange}  value={token.value} id="tokenPaste" type="text" placeholder="put token heree" />
             <button type="submit" id="submitToken" onClick={login}>submit</button>
-            {/*<Link to={"/messages"} onClick={login()}>Submit</Link>*/}
+            {/*<Link to={"/home"} onClick={login()}>Submit</Link>*/}
       </div>
   );
 }
