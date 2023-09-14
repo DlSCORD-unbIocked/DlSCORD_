@@ -5,14 +5,14 @@ const logOut = (e) => {
     return false
 }
 
-const button_click_1 =  async () => {
+const getGuilds =  async () => {
     let guilds = await fetch('https://discordapp.com/api/users/@me/guilds', {
         headers: {
             'Authorization': document.cookie.slice(6)
         }
-    })
-        // .then(data => data.json())
+    }).then(data => data.json())
     console.log(guilds)
+    return guilds;
 
 }
 
@@ -25,4 +25,4 @@ const button_click_2 =  async () => {
         })
 }
 
-export {button_click_2, button_click_1, logOut}
+export {button_click_2, getGuilds, logOut}
