@@ -11,7 +11,7 @@ function Login() {
   const login = async (e) => {
       e.preventDefault()
       document.cookie = "token="+token
-      window.open("messages", "_self");
+      window.open("home", "_self");
   };
 
   return (
