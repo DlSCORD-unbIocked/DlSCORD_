@@ -1,9 +1,10 @@
 $primary: #6983CF;
-$secondary: #858FBB;
+$secondary: #474b8d;
 $tertiary: #F5F8FF;
 $accent: #FFC96D;
 $tc-1: #d45dff;
 $tc-2: #ec4969;
+$off-white: #c4c4c4;
 
 html {
   background: $primary;
@@ -12,31 +13,47 @@ html {
 
 .Navbar {
   display: flex;
+  justify-content: space-between;
+  background: black;
+  padding: 15px;
+  div {
+    display: flex;
+  }
 }
 
-.serverButtons {
-  background: $tertiary;
+.channel-list {
+  background: black;
   display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  min-height: 100vh;
-  position: fixed;
-  gap: 1px;
+  flex-flow: column;
+  width: 175px;
+  .channel-container {
+    margin: 5px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: $secondary;
+  }
 }
 
-.serverButton {
-  background: $secondary;
-  width: 100px;
-  height: 50px;
-  border-radius: 10px;
-  border: hidden;
-  display:none;
-}
 
-.serverButton:hover {
-  background: $accent;
-}
 
+
+
+.b1 {
+  border: 3px solid $off-white;
+  color: $off-white;
+  background: black;
+  border-radius: 25px;
+  font-weight: 800;
+  font-size: 20px;
+  margin: auto 5px auto 5px;
+  &:hover {
+    color: white;
+    background:transparent;
+  }
+  width: 125px;
+  height: 40px;
+}
 @keyframes rotate-colors {
   0% {
     background-position: 0% 50%;
@@ -52,7 +69,7 @@ html {
   color: #fff;
   margin-top: 0px;
   margin-bottom: 0px;
-  font-size: 80px;
+  font-size: 50px;
   font-weight: 800;
   letter-spacing: -0.04em;
   -webkit-background-clip: text;
