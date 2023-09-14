@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {getGuilds, getDMs, logOut} from "../components/lib";
-
+import './home.scss';
 
 const Home = () => {
     let [guilds, setGuilds]  = useState([]);
@@ -16,7 +16,7 @@ const Home = () => {
 
     // generate lists of rendered components containing usernames
     let dms_rendered = Array.from(dms).map((dm) =>  { return ( 
-        <button className="serverButton">{dm.recipients.map(user => user.username)}</button>
+        <button className="dmButton">{dm.recipients.map(user => user.username)}</button>
     ) })
     let guilds_rendered = Array.from(guilds).map((guild) =>  { return ( 
         <button className="serverButton">{guild.name}</button>
@@ -31,12 +31,12 @@ const Home = () => {
             <button onClick={logOut} className="opts">Log Out</button>
             <button onClick={button_click_1}>Servers</button>
             <button onClick={getDMs}>opts</button>
-            <div style={{border: "1px solid black"}}>
+            <div className="serverButtons">
                 {guilds_rendered}
             </div>
-            <div style={{border: "1px solid black"}}> 
-                {dms_rendered}
-            </div>
+            {/*<div style={{border: "1px solid black"}}> */}
+            {/*    {dms_rendered}*/}
+            {/*</div>*/}
         </div>
     ) 
 

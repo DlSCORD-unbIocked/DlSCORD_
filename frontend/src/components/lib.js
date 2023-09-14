@@ -16,8 +16,6 @@ const getGuilds =  async () => {
 
 }
 
-// i pushed ok
-
 const getDMs =  async () => {
     let dms = await fetch(
         "https://discord.com/api/users/@me/channels", {

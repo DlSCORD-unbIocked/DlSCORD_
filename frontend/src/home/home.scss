@@ -1,0 +1,30 @@
+$primary: #6983CF;
+$secondary: #858FBB;
+$tertiary: #F5F8FF;
+$accent: #FFC96D;
+
+html {
+  background: $primary;
+}
+
+.serverButtons {
+  background: $tertiary;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed;
+  gap: 1px;
+}
+
+.serverButton {
+  background: $secondary;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: hidden;
+}
+
+.serverButton:hover {
+  background: $accent;
+}
