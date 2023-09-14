@@ -2,9 +2,16 @@ $primary: #6983CF;
 $secondary: #858FBB;
 $tertiary: #F5F8FF;
 $accent: #FFC96D;
+$tc-1: #d45dff;
+$tc-2: #ec4969;
 
 html {
   background: $primary;
+}
+
+
+.Navbar {
+  display: flex;
 }
 
 .serverButtons {
@@ -23,8 +30,32 @@ html {
   height: 50px;
   border-radius: 10px;
   border: hidden;
+  display:none;
 }
 
 .serverButton:hover {
   background: $accent;
+}
+
+@keyframes rotate-colors {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.header-1 {
+  background-image: linear-gradient(135deg, $tc-1, $tc-2);
+  background-size: 150% 150%;
+  animation: rotate-colors 3s infinite alternate;
+  color: #fff;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

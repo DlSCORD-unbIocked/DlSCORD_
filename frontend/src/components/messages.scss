@@ -1,0 +1,17 @@
+.message{
+    border: 1px solid black;
+    * {
+        margin: 0px;
+    }
+
+}
+
+#messages-wrapper {
+    overflow-y: auto;
+    max-width: 1200px;
+    margin: auto;
+    height:800px;
+    @media(min-width: 400px) {
+        width: 80%;
+    }
+}
