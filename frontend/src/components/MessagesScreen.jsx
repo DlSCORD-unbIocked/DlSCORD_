@@ -1,40 +1,45 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getGuilds, getDMs, logOut} from "./lib";
 
 
-// const Item = (props) => {
-//
-//     // props['author']['global_name']}}</b>:<br>{{item['content']
-//
-//     return (
-//     )
-// }
-const MessagesScreen = (props) => {
-    const [message, setMessage] = useState("")
-    const handleMessageChange = (e) => { setMessage(e.target.value) }
+const MessagesScreen = () => {
+    let [guilds, setGuilds]  = useState([]);
+    let [dms, setDMs]  = useState([]);
+    // calls functions below after component mounts
+    useEffect(() => {
+        (async () => { setGuilds(await getGuilds()) })();
+        (async () => { setDMs(await getDMs()) })();
 
-   const sendMessage = (e) => {
-      e.preventDefault()
-       fetch (
-           window.location.origin, {
-               method: "POST",
-               headers: {"Content-Type": "application/json",},
-               body: Json.stringify({"message": message})
-           }
-       )
+    }, []);
 
-   }
+
+    // generate lists of rendered components containing usernames
+    let dms_rendered = Array.from(dms).map((dm) =>  { return ( 
+        <button className="serverButton">{dm.recipients.map(user => user.username)}</button>
+    ) })
+    let guilds_rendered = Array.from(guilds).map((guild) =>  { return ( 
+        <button className="serverButton">{guild.name}</button>
+    ) })
+
+    const button_click_1 = async (e) => {
+        e.preventDefault();
+    }
 
     return (
-        <>
-            {props.items.map(<p>{props.author.global_name}:{props.content}</p>)}
+        <div className="sideNav">
+            <button onClick={logOut} className="opts">Log Out</button>
+            <button onClick={button_click_1}>Servers</button>
+            <button onClick={getDMs}>opts</button>
+        <div style={{border: "1px solid black"}}>
+            {guilds_rendered}
+        </div>
+        <div style={{border: "1px solid black"}}>
+            {dms_rendered}
+        </div>
+        </div>
+    ) 
 
-            <form onSubmit={sendMessage}>
-                <input type="submit" style={{display: "none"}}/>
-                <input type="text" value={message } onChange={handleMessageChange} placeholder={"Send Mesage . . . "} autoComplete={"off"}/>
-            </form>
-
-
-        </>
-    )
 
 }
+
+export default MessagesScreen;

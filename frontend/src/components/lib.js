@@ -16,13 +16,17 @@ const getGuilds =  async () => {
 
 }
 
-const button_click_2 =  async () => {
-    await fetch(
-        window.location.origin + "/dm/0", {
-            method: "POST",
-            headers: {"Content-Type": "application/json",},
-            body: JSON.stringify({"token": "1"})
-        })
+// i pushed ok
+
+const getDMs =  async () => {
+    let dms = await fetch(
+        "https://discord.com/api/users/@me/channels", {
+        headers: {
+            'Authorization': document.cookie.slice(6)
+        }
+    }).then(data => data.json())
+    console.log(dms)
+    return dms
 }
 
-export {button_click_2, getGuilds, logOut}
+export {getDMs, getGuilds, logOut}
