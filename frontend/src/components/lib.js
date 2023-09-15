@@ -42,4 +42,14 @@ const getMessages = async(id) => {
     return content;
 }
 
-export {getDMs, getGuilds, logOut, getMessages}
+const getChannels = async(guild_id) => {
+    let data =  await fetch(`https://discordapp.com/api/guilds/${guild_id}/active-channels`, {
+        headers: {
+            'Authorization': document.cookie.slice(6)
+        }
+    }).then(data => data.json())
+    console.log(data)
+    return data;
+}
+
+export {getDMs, getGuilds, logOut, getMessages, getChannels}

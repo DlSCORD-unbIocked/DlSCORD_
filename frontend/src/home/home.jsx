@@ -1,15 +1,15 @@
 import {useEffect, useState} from "react";
-import {getGuilds, getDMs, logOut} from "../components/lib";
+import {getGuilds, getDMs, logOut, getChannels} from "../components/lib";
 import Messages from '../components/Messages'
 import './home.scss';
 
 const Home = () => {
-    let [guilds, setGuilds]  = useState([]);
-    let [dms, setDMs]  = useState([]);
-    let [messages_id, set_messages_id] = useState("")
-    let [channelName, setChannelName] = useState("")
-
-   let [channelDisplayMode, setChannelDisplayMode]  = useState("none")
+    let [guilds, setGuilds]  = useState([]); // list of guilds user is member of
+    let [guildChannels, setGuildChannels] = useState([]); // dynamically set to be list of channels from selected guild
+    let [dms, setDMs]  = useState([]); // list of dm channels user has
+    let [messages_id, set_messages_id] = useState("") // used for applying correct channel to messages component
+    let [channelName, setChannelName] = useState("") // used for naming messages component
+   let [channelDisplayMode, setChannelDisplayMode]  = useState("none") // determins what to display in side bar
 
     // calls functions below after component mounts
     useEffect(() => {
@@ -17,14 +17,23 @@ const Home = () => {
         getDMs().then(dms_tmp => { setDMs(dms_tmp) })
     }, []);
 
+    // when clicking on guild -> get guild channels -> set channels
+    const guild_click = async (guild_id) => {
+        getChannels(guild_id).then(channels_tmp => setGuildChannels(channels_tmp.channels))
+        setChannelDisplayMode("channels")
+
+    }
 
     // generate lists of rendered components containing usernames
     let dms_rendered = Array.from(dms).map((dm, index) =>  { return (
         <button onClick={() => {set_messages_id(dm.id); setChannelName(dm.recipients.map(user => user.username).join(", "))}} key={index} className="channel-container">{dm.recipients.map(user => user.username).join(", ")}</button>
     ) })
     let guilds_rendered = Array.from(guilds).map((guild, index) =>  { return (
-        <button onClick={() => {set_messages_id(guild.id); setChannelName(guild.name)}} key={index} className="channel-container">{guild.name}</button>
+        <button onClick={() => guild_click(guild.id)} key={index} className="channel-container">{guild.name}</button>
     ) })
+    let guild_channels_rendered = Array.from(guildChannels).map((channel, index) => {
+        return (<button onClick={() => {set_messages_id(channel.channel_id); setChannelName(channel.channel_id)}} key={index} className="channel-container">{channel.channel_id}</button>)
+    })
 
     const updateChannelDisplayMode = (mode) => {
         if (channelDisplayMode === mode) {
@@ -49,6 +58,7 @@ const Home = () => {
         <div id={"body"}>
             {channelDisplayMode === "server" && <div className={"channel-list"}>{guilds_rendered}</div>}
             {channelDisplayMode === "dms" && <div className={"channel-list"}>{dms_rendered}</div>}
+            {channelDisplayMode === "channels" && <div className={"channel-list"}>{guild_channels_rendered}</div>}
 
             <Messages id={messages_id} name={channelName}/>
         </div>
