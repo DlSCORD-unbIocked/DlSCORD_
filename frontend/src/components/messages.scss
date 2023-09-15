@@ -6,12 +6,15 @@
 
 }
 
-#messages-wrapper {
-    overflow-y: auto;
+#messages-container {
     max-width: 1200px;
     margin: auto;
-    height:800px;
-    @media(min-width: 400px) {
-        width: 80%;
+    #messages-wrapper {
+        overflow-y: auto;
+        height:800px;
+        border: 1px solid black;
+        @media(min-width: 400px) {
+            width: 80%;
+        }
     }
 }

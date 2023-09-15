@@ -21,20 +21,24 @@ html {
   }
 }
 
-.channel-list {
-  background: black;
+#body{
   display: flex;
-  flex-flow: column;
-  width: 175px;
-  .channel-container {
-    margin: 5px;
-    height: 35px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: $secondary;
+  border: 1px solid black;
+  .channel-list {
+    background: black;
+    display: flex;
+    flex-flow: column;
+    width: 175px;
+    //position: fixed;
+    .channel-container {
+      margin: 5px;
+      height: 35px;
+      border: 2px solid black;
+      border-radius: 10px;
+      background: $secondary;
+    }
   }
 }
-
 
 
 
