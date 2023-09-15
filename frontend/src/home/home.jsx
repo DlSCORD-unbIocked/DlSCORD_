@@ -52,7 +52,7 @@ const Home = () => {
                 <button className={"b1"} onClick={() => updateChannelDisplayMode("dms")}>opts</button>
             </div>
             <div>
-                <h1 className={"header-1"}>ALT DISCORD</h1>
+                <h1 className={"header-1"}>Smart Scholars</h1>
             </div>
         </div>
         <div id={"body"}>

@@ -1,20 +1,19 @@
-$primary: #6983CF;
-$secondary: #474b8d;
-$tertiary: #F5F8FF;
-$accent: #FFC96D;
+$primary: #FFFFFF;
+$secondary: #333333;
+$accent: #31ad5e;
 $tc-1: #d45dff;
 $tc-2: #ec4969;
 $off-white: #c4c4c4;
 
 html {
-  background: $primary;
+  background: linear-gradient(95deg, $primary, $accent);
 }
 
 
 .Navbar {
   display: flex;
   justify-content: space-between;
-  background: black;
+  background: $secondary;
   padding: 15px;
   div {
     display: flex;
@@ -25,17 +24,31 @@ html {
   display: flex;
   border: 1px solid black;
   .channel-list {
-    background: black;
+    //background: $primary;
     display: flex;
     flex-flow: column;
-    width: 175px;
+    width: 225px;
     //position: fixed;
     .channel-container {
-      margin: 5px;
-      height: 35px;
-      border: 2px solid black;
-      border-radius: 10px;
+      color: $primary;
+      transition: all 0.5s;
+      margin: 2px;
+      height: 75px;
+      border-radius: 15px;
+      border: none;
       background: $secondary;
+      &:hover {
+        color: $accent;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        border-top-width: 4px;
+        border-bottom-width: 4px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-top-color: $accent;
+        border-bottom-color: $accent;
+      }
     }
   }
 }
@@ -44,7 +57,7 @@ html {
 
 
 .b1 {
-  border: 3px solid $off-white;
+  border: 3px solid $accent;
   color: $off-white;
   background: black;
   border-radius: 25px;
