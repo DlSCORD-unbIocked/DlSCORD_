@@ -15,11 +15,14 @@ function Login() {
   };
 
   return (
-      <div id={"login-form"}>
-            <h1>Login</h1>
-            <input onChange={handleTokenChange}  value={token.value} id="tokenPaste" type="text" placeholder="Discord Token" />
-            <button type="submit" id="submitToken" onClick={login}>submit</button>
-            <a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank">Where is my discord token?</a>
+      <div>
+          <h1 className={"smartScholars"}>WELCOME TO SMARTSCHOLARS</h1>
+          <div id={"login-form"}>
+                <h1>Login</h1>
+                <input onChange={handleTokenChange}  value={token.value} id="tokenPaste" type="text" placeholder="Discord Token" />
+                <button type="submit" id="submitToken" onClick={login}>submit</button>
+                <a href = "https://www.youtube.com/watch?v=YEgFvgg7ZPI" target="_blank">Where is my discord token?</a>
+          </div>
       </div>
   );
 }

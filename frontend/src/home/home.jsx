@@ -44,8 +44,8 @@ const Home = () => {
     }
 
     return (
-        <>
         <div className="Navbar">
+
             <div>
                 <button className={"b1"} onClick={logOut}>Log Out</button>
                 <button className={"b1"} onClick={() => updateChannelDisplayMode("server")}>Servers</button>

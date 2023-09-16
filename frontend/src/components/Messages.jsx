@@ -47,8 +47,8 @@ const Messages = (props) => {
                 {messages_rendered}
             </div>
             <div>
-                <input type="text" value={message2b} onChange={handleSetMessage} placeholder={"Send Message"}/>
-                <button onClick={sendMessage}>{">"}</button>
+                <input id="textBox" type="text" value={message2b} onChange={handleSetMessage} placeholder={"Send Message"}/>
+                <button id="sendButton" onClick={sendMessage}>{">"}</button>
             </div>
         </div>
     )

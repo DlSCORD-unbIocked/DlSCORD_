@@ -1,5 +1,5 @@
 $primary: #FFFFFF;
-$secondary: #333333;
+$secondary: #3b3b3b;
 $accent: #31ad5e;
 $tc-1: #d45dff;
 $tc-2: #ec4969;
@@ -27,7 +27,7 @@ html {
     //background: $primary;
     display: flex;
     flex-flow: column;
-    width: 225px;
+    width: 200px;
     //position: fixed;
     .channel-container {
       color: $primary;
