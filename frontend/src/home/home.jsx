@@ -50,7 +50,6 @@ const Home = () => {
     }
 
     return (
-<<<<<<< Updated upstream
         <>
         <div className="Navbar">
 
@@ -63,19 +62,6 @@ const Home = () => {
                 <h1 className={"header-1"}>Smart Scholars</h1>
             </div>
         </div>
-=======
-        <div id={"home-wrapper"}>
-            <div className="Navbar">
-                <div>
-                    <button className={"b1"} onClick={() => logOut()}>Log Out</button>
-                    <button className={"b1"} onClick={() => updateChannelDisplayMode("server")}>Servers</button>
-                    <button className={"b1"} onClick={() => updateChannelDisplayMode("dms")}>DM's</button>
-                </div>
-                <div>
-                    <h1 className={"header-1"}>ALT DISCORD</h1>
-                </div>
-            </div>
->>>>>>> Stashed changes
             <div id={"body"}>
                 {channelDisplayMode === "server" && <div className={"channel-list"}>{guilds_rendered}</div>}
                 {channelDisplayMode === "dms" && <div className={"channel-list"}>{dms_rendered}</div>}
@@ -83,13 +69,8 @@ const Home = () => {
 
                 <Messages id={messages_id} name={channelName}/>
             </div>
-<<<<<<< Updated upstream
         </>
-=======
-        </div>
->>>>>>> Stashed changes
-    )
-
+            )
 
 }
 

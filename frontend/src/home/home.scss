@@ -16,14 +16,8 @@ html {
 .Navbar {
   display: flex;
   justify-content: space-between;
-<<<<<<< Updated upstream
   background: $secondary;
   padding: 15px;
-=======
-  background: black;
-  padding: 10px;
-  height: 70px;
->>>>>>> Stashed changes
   div {
     display: flex;
   }
@@ -38,12 +32,7 @@ html {
     //background: $primary;
     display: flex;
     flex-flow: column;
-<<<<<<< Updated upstream
     width: 200px;
-    //position: fixed;
-=======
-    width: 175px;
->>>>>>> Stashed changes
     .channel-container {
       color: $primary;
       transition: all 0.5s;

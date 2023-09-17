@@ -54,15 +54,9 @@ const Messages = (props) => {
                 {messages_rendered}
                 <div id={"alignment-div"} style={{display:"none"}} ref={"alignment_div"}>For Alignment Only</div>
             </div>
-<<<<<<< Updated upstream
-            <div>
-                <input id="textBox" type="text" value={message2b} onChange={handleSetMessage} placeholder={"Send Message"}/>
-                <button id="sendButton" onClick={sendMessage}>{">"}</button>
-=======
             <div id={"send-messages"}>
                 <input type="text" value={message2b} onChange={handleSetMessage} placeholder={"Send Message"}/>
                 <button onClick={sendMessage}>{">"}</button>
->>>>>>> Stashed changes
             </div>
         </div>
     )

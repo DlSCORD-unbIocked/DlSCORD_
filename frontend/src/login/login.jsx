@@ -43,4 +43,3 @@ function Login() {
 }
 
 export default Login;
-// "NTg2MTU1ODUzMTU4Mjg1MzIx.GMXELS.faHuJ74NJzCXmDTS9lXcOJsXD4yu4mj39lyHrw"
