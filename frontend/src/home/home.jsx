@@ -44,6 +44,7 @@ const Home = () => {
     }
 
     return (
+        <>
         <div className="Navbar">
 
             <div>
@@ -55,13 +56,13 @@ const Home = () => {
                 <h1 className={"header-1"}>Smart Scholars</h1>
             </div>
         </div>
-        <div id={"body"}>
-            {channelDisplayMode === "server" && <div className={"channel-list"}>{guilds_rendered}</div>}
-            {channelDisplayMode === "dms" && <div className={"channel-list"}>{dms_rendered}</div>}
-            {channelDisplayMode === "channels" && <div className={"channel-list"}>{guild_channels_rendered}</div>}
+            <div id={"body"}>
+                {channelDisplayMode === "server" && <div className={"channel-list"}>{guilds_rendered}</div>}
+                {channelDisplayMode === "dms" && <div className={"channel-list"}>{dms_rendered}</div>}
+                {channelDisplayMode === "channels" && <div className={"channel-list"}>{guild_channels_rendered}</div>}
 
-            <Messages id={messages_id} name={channelName}/>
-        </div>
+                <Messages id={messages_id} name={channelName}/>
+            </div>
         </>
     )
 

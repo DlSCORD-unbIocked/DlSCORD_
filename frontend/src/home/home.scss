@@ -42,12 +42,8 @@ html {
         border-radius: 5px;
         letter-spacing: 1px;
         opacity: 0.7;
-        border-top-width: 4px;
-        border-bottom-width: 4px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: $accent;
-        border-bottom-color: $accent;
+        border-top: 4px solid $accent;
+        border-bottom: 4px solid $accent;
       }
     }
   }

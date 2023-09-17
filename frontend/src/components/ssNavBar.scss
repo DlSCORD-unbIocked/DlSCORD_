@@ -1,0 +1,28 @@
+$primary: #FFFFFF;
+$secondary: #3b3b3b;
+$accent: #31ad5e;
+$tc-1: #d45dff;
+$tc-2: #ec4969;
+$off-white: #c4c4c4;
+.nav {
+    background: $secondary;
+    display: flex;
+    flex-flow: row;
+    gap: 30px;
+    #signin {
+        position: absolute;
+        right: 0;
+    }
+    .navButtons {
+        transition: all 0.3s;
+        font-size: 15px;
+        border: hidden;
+        background: $secondary;
+        color: $accent;
+        height: 50px;
+        width: 100px;
+    }
+    .navButtons:hover {
+        border-top: $accent solid 5px;
+    }
+}
