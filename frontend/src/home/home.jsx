@@ -19,9 +19,9 @@ const Home = () => {
 
     // when clicking on guild -> get guild channels -> set channels
     const guild_click = async (guild_id) => {
-        getChannels(guild_id).then(channels_tmp => setGuildChannels(channels_tmp.channels))
+        getChannels(guild_id)
+            .then(channels_tmp => setGuildChannels(channels_tmp.channels))
         setChannelDisplayMode("channels")
-
     }
 
     // generate lists of rendered components containing usernames
@@ -32,7 +32,13 @@ const Home = () => {
         <button onClick={() => guild_click(guild.id)} key={index} className="channel-container">{guild.name}</button>
     ) })
     let guild_channels_rendered = Array.from(guildChannels).map((channel, index) => {
-        return (<button onClick={() => {set_messages_id(channel.channel_id); setChannelName(channel.channel_id)}} key={index} className="channel-container">{channel.channel_id}</button>)
+        return (<button
+            onClick={() => {
+                set_messages_id(channel.channel_id);
+                setChannelName(channel.channel_id);
+                setChannelDisplayMode("none")}
+            }
+            key={index} className="channel-container">{channel.channel_id}</button>)
     })
 
     const updateChannelDisplayMode = (mode) => {
@@ -44,6 +50,7 @@ const Home = () => {
     }
 
     return (
+<<<<<<< Updated upstream
         <>
         <div className="Navbar">
 
@@ -56,6 +63,19 @@ const Home = () => {
                 <h1 className={"header-1"}>Smart Scholars</h1>
             </div>
         </div>
+=======
+        <div id={"home-wrapper"}>
+            <div className="Navbar">
+                <div>
+                    <button className={"b1"} onClick={() => logOut()}>Log Out</button>
+                    <button className={"b1"} onClick={() => updateChannelDisplayMode("server")}>Servers</button>
+                    <button className={"b1"} onClick={() => updateChannelDisplayMode("dms")}>DM's</button>
+                </div>
+                <div>
+                    <h1 className={"header-1"}>ALT DISCORD</h1>
+                </div>
+            </div>
+>>>>>>> Stashed changes
             <div id={"body"}>
                 {channelDisplayMode === "server" && <div className={"channel-list"}>{guilds_rendered}</div>}
                 {channelDisplayMode === "dms" && <div className={"channel-list"}>{dms_rendered}</div>}
@@ -63,7 +83,11 @@ const Home = () => {
 
                 <Messages id={messages_id} name={channelName}/>
             </div>
+<<<<<<< Updated upstream
         </>
+=======
+        </div>
+>>>>>>> Stashed changes
     )
 
 

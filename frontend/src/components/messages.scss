@@ -12,14 +12,29 @@ $accent: #31ad5e;
 
 #messages-container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    //@media(min-width: 400px) {
+    //    width: 80%;
+    //}
+    #messages-channel-name {
+       border: 1px solid black;
+        height: 50px;
+        h1 { font-size: 25px; }
+    }
     #messages-wrapper {
-        overflow-y: auto;
-        height:800px;
         border: 1px solid black;
-        @media(min-width: 400px) {
-            width: 80%;
-        }
+        flex-grow:1;
+        overflow: auto;
+        //display: flex;
+        //flex-flow: column;
+        //justify-content: flex-end;
+    }
+    #send-messages {
+        height: 25px;
+        border: 1px solid black;
     }
     #textBox {
         width: 500px;

@@ -1,9 +1,7 @@
 // logs user out by removing token
-const logOut = (e) => {
-    e.preventDefault()
+const logOut = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location = "/home"
-    return false
+    window.open("/", "_self");
 }
 
 // get list of servres you are  apart of
