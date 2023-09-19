@@ -4,7 +4,7 @@ import {getMessages} from "./lib";
 
 const Messages = (props) => {
 
-    let alignment_div = useRef(0)
+    // let alignment_div = useRef("")
 
     let [message2b, setMessage2b] = useState("")
     let [messages, setMessages] = useState([])
@@ -21,6 +21,15 @@ const Messages = (props) => {
                 "Content-Type": "application/json"
             }
         })
+        syncMessages()
+    }
+
+    const syncMessages = () => {
+        if (props.id) {
+            getMessages(props.id).then(messages_tmp => {
+                setMessages(messages_tmp)
+            })
+        }
     }
 
     useEffect(() => {
@@ -29,11 +38,12 @@ const Messages = (props) => {
                 setMessages(messages_tmp)
             })
         }
-        alignment_div?.current?.scrollIntoView()
+        // alignment_div?.current?.scrollIntoView()
 
     //     let messages_wrapper =
     //     messages_wrapper.scrollIntoView()
     }, [props.id]);
+
 
     let messages_rendered = Array.from(messages).reverse().map((message, index) => {
         return (
@@ -45,14 +55,16 @@ const Messages = (props) => {
         )
     })
 
+
     return (
         <div id={"messages-container"}>
             <div id={"messages-channel-name"}>
+                <button onClick={() => syncMessages()}>Sync</button>
                 <h1>{props.name}</h1>
             </div>
             <div id={"messages-wrapper"}>
                 {messages_rendered}
-                <div id={"alignment-div"} style={{display:"none"}} ref={"alignment_div"}>For Alignment Only</div>
+                {/*<div id={"alignment-div"} style={{display:"none"}} ref={"alignment_div"}>For Alignment Only</div>*/}
             </div>
             <div id={"send-messages"}>
                 <input type="text" value={message2b} onChange={handleSetMessage} placeholder={"Send Message"}/>

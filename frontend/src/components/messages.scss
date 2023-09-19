@@ -22,7 +22,15 @@ $accent: #31ad5e;
     #messages-channel-name {
        border: 1px solid black;
         height: 50px;
-        h1 { font-size: 25px; }
+        display: flex;
+        align-items: center;
+        h1 {
+            font-size: 25px;
+         }
+        button {
+            height: 30px;
+        }
+
     }
     #messages-wrapper {
         border: 1px solid black;
