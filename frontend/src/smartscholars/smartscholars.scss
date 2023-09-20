@@ -6,7 +6,21 @@ $tc-2: #ec4969;
 $off-white: #c4c4c4;
 
 .smartScholars {
-    text-align:center;
-    color: $secondary;
+    text-align: center;
+    color: $primary;
     font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+}
+.background-container {
+    background-image: url("./image.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    width: 100vw;
+    height: 100vh;
 }
