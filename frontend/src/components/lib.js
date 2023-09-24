@@ -61,4 +61,4 @@ const getChannels = async(guild_id) => {
     return data;
 }
 
-export {getDMs, getGuilds, logOut, getMessages, getChannels}
+export {getDMs, getGuilds, logOut, getMessages, getChannels, getToken}
