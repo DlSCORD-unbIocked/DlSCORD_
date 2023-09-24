@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 import './login.scss';
 import {Link} from "react-router-dom";
 import SSNavBar from "../components/ssNavBar";
@@ -11,7 +11,12 @@ function Login() {
     };
   const login = async (e) => {
       e.preventDefault()
-      document.cookie = "token="+token
+      let expiration_date = new Date();
+      expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+      
+      document.cookie = `token=${token}; expires=${expiration_date}`
+    // Cookies.set('token', token, {})
+      
       window.open("home", "_self");
   };
 
