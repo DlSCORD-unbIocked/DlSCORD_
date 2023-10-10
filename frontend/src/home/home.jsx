@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getGuilds, getDMs, logOut, getChannels} from "../components/lib";
+import {getGuilds, getDMs, logOut, getChannels, getToken} from "../components/lib";
 import Messages from '../components/Messages'
 import './home.scss';
 

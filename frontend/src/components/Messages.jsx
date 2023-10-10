@@ -1,6 +1,7 @@
 import './messages.scss';
 import {useEffect, React, Component, useState, useRef} from "react";
-import {getMessages} from "./lib";
+import {getMessages, getToken, PROXY_PORT, PROXY_URL} from "./lib";
+import axios from 'axios';
 
 const Messages = (props) => {
 
@@ -12,15 +13,19 @@ const Messages = (props) => {
     const sendMessage = async (e) => {
         e.preventDefault()
         console.log(props.id)
-       await fetch(
-        `https://discord.com/api/v9/channels/${props.id}/messages`, {
-            method: "POST",
-            body: JSON.stringify({"content": message2b}),
+        let token = getToken()
+
+        await axios.post(`https://discord.com/api/v9/channels/${props.id}/messages`, {
+            content: message2b,
             headers: {
                 'Authorization': document.cookie.slice(6),
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
+            },
+            proxy: {
+                host: PROXY_URL,
+                port: PROXY_PORT,
             }
-        })
+        });
         syncMessages()
     }
 

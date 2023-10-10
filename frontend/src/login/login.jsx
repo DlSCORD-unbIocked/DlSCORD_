@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './login.scss';
 import {Link} from "react-router-dom";
 import SSNavBar from "../components/ssNavBar";
+import {getToken} from "../components/lib";
 
 function Login() {
     const [token, setToken] = useState("");
@@ -22,7 +23,11 @@ function Login() {
 
     const saveToken = async(e) =>  {
         e.preventDefault()
-        window.localStorage.setItem("token", token);
+
+        let expiration_date = new Date();
+        expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+        window.localStorage.setItem("token", token+`; expire=${expiration_date}`);
+
         alert("Token Saved")
     }
   const loadToken = async(e) =>  {

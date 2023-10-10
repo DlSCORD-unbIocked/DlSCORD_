@@ -1,3 +1,9 @@
+import axios from 'axios';
+
+const PROXY_URL = "50.62.183.223";
+const PROXY_PORT = 80;
+
+
 // logs user out by removing token
 const logOut = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -6,59 +12,75 @@ const logOut = () => {
 
 const getToken = () => {
     let cookie_raw = document.cookie;
-    let token = cookie_raw.slice(6, cookie_raw.indexOf(";"))
-    return token;
+    // console.log(cookie_raw.slice(6))
+    // console.log(cookie_raw.slice(6, cookie_raw.indexOf(";")))
+    // return cookie_raw.slice(6, cookie_raw.indexOf(";"))
+    return cookie_raw.slice(6)
 }
-    
 
-// get list of servres you are  apart of
-const getGuilds =  async () => {
-    let token = await getToken();
-    let guilds = await fetch('https://discordapp.com/api/users/@me/guilds', {
+
+
+const getGuilds = async () => {
+    let token = getToken();
+    let guilds = await axios.get('https://discord.com/api/users/@me/guilds', {
         headers: {
             'Authorization': token
+        },
+        proxy: {
+            host: PROXY_URL,
+            port: PROXY_PORT,
         }
-    }).then(data => data.json())
-    console.log(guilds)
+    }).then(response => response.data);
+
+    console.log(guilds);
     return guilds;
-
 }
 
-// get list of people you are dming
-const getDMs =  async () => {
-    let token = await getToken();
-    let dms = await fetch(
-        "https://discord.com/api/users/@me/channels", {
+const getDMs = async () => {
+    let token = getToken();
+    let dms = await axios.get('https://discord.com/api/users/@me/channels', {
         headers: {
             'Authorization': token
+        },
+        proxy: {
+            host: PROXY_URL,
+            port: PROXY_PORT,
         }
-    }).then(data => data.json())
-    console.log(dms)
-    return dms
+    }).then(response => response.data);
+
+    console.log(dms);
+    return dms;
 }
 
-
-// used to get messages from channel w/ the specified id
-const getMessages = async(id) => {
-    let token = await getToken();
-    let content = await fetch(
-        `https://discord.com/api/v9/channels/${id}/messages`, {
-            headers: { 'Authorization': token }
+const getMessages = async (id) => {
+    let token = getToken();
+    let content = await axios.get(`https://discord.com/api/v9/channels/${id}/messages`, {
+        headers: {
+            'Authorization': token
+        },
+        proxy: {
+            host: PROXY_URL,
+            port: PROXY_PORT,
         }
-    ).then(data => data.json())
-    console.log(content)
+    }).then(response => response.data);
+
+    console.log(content);
     return content;
 }
 
-const getChannels = async(guild_id) => {
+const getChannels = async (guild_id) => {
     let token = await getToken();
-    let data =  await fetch(`https://discordapp.com/api/guilds/${guild_id}/active-channels`, {
+    let data = await axios.get(`https://discord.com/api/guilds/${guild_id}/active-channels`, {
         headers: {
             'Authorization': token
+        },
+        proxy: {
+            host: PROXY_URL,
+            port: PROXY_PORT,
         }
-    }).then(data => data.json())
-    console.log(data)
+    }).then(response => response.data);
+
+    console.log(data);
     return data;
 }
-
-export {getDMs, getGuilds, logOut, getMessages, getChannels, getToken}
+export {getDMs, getGuilds, logOut, getMessages, getChannels, PROXY_URL, PROXY_PORT, getToken}
